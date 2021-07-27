@@ -12,7 +12,7 @@
 
 #include "../inc/pipex.h"
 
-static int		ft_isset(char c, char *set)
+static int	ft_isset(char c, char *set)
 {
 	while (*set)
 	{
@@ -23,23 +23,23 @@ static int		ft_isset(char c, char *set)
 	return (0);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
 	char	*dst;
 	char	*ret;
 	char	*tmp;
 
-	if (!s1 || !set || set == s1)
-		return (NULL);
 	i = ft_strlen(s1);
-	i--;
+	if (i > 1)
+		i--;
 	tmp = (char *)s1;
 	while (i >= 0 && ft_isset(s1[i], (char *)set))
 		i--;
 	while (i >= 0 && ft_isset(*tmp++, (char *)set))
 		i--;
-	if (!(dst = (char *)malloc(sizeof(char) * (i + 2))))
+	dst = (char *)malloc(sizeof(char) * (i + 2));
+	if (dst == NULL)
 		return (NULL);
 	ret = dst;
 	tmp--;

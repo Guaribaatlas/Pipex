@@ -1,6 +1,6 @@
 NAME=pipex
-SRC=	src/main.c src/utils.c Get_next_line/get_next_line.c Get_next_line/get_next_line_utils.c src/ft_strdup.c \
-		src/ft_strlen.c src/ft_strcpy.c src/ft_strncmp.c src/ft_split.c src/ft_strtrim.c src/ft_strjoin.c
+SRC=	src/main.c src/utils.c  src/ft_strdup.c src/ft_strlen.c src/ft_strcpy.c src/ft_strncmp.c src/ft_split.c \
+		src/ft_strtrim.c src/ft_strjoin.c src/utils2.c
 OBJ= $(SRC:.c=.o)
 CC= gcc
 INC = inc

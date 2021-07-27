@@ -12,10 +12,10 @@
 
 #include "../inc/pipex.h"
 
-int		ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int c1;
-	unsigned int c2;
+	unsigned int	c1;
+	unsigned int	c2;
 
 	while (n > 0)
 	{
