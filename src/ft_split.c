@@ -80,6 +80,23 @@ static char	**ft_mktab(char *str, char **tab, char c)
 	return (tab);
 }
 
+int	ft_protect(char *split, char **tab, char c)
+{
+	tab = ft_mallword(split, tab, c);
+	if (tab == NULL)
+	{
+		free(split);
+		return (0);
+	}
+	tab = ft_mktab(split, tab, c);
+	if (tab == NULL)
+	{
+		free(split);
+		return (0);
+	}
+	return (1);
+}
+
 char	**ft_split(const char *str, char c)
 {
 	char	**tab;
@@ -89,12 +106,12 @@ char	**ft_split(const char *str, char c)
 
 	if (!str)
 		return (NULL);
-	split = ft_strtrim(str, &c);
+	split = ft_strtrim(str, " ");
 	if (split == NULL)
 		return (NULL);
 	count = 0;
 	i = -1;
-	while (split[++i])
+	while (split[++i] != '\0')
 	{
 		if (split[i] != c && (split[i + 1] == c || split[i + 1] == '\0'))
 			count++;
@@ -102,8 +119,8 @@ char	**ft_split(const char *str, char c)
 	tab = (char **)malloc(sizeof(char *) * (count + 1));
 	if (tab == NULL)
 		return (0);
-	tab = ft_mallword(split, tab, c);
-	tab = ft_mktab(split, tab, c);
+	if (!(ft_protect(split, tab, c)))
+		return (NULL);
 	tab[count] = 0;
 	free(split);
 	return (tab);
